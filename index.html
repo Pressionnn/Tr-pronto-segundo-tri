@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Trabalho do Robson</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-image: url('program.jpg');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: -1;
+    }
+
+    h1 {
+      color: white;
+      position: absolute;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+      margin: 0;
+    }
+
+    .content-wrapper {
+      width: 100%;
+      max-width: 800px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .video-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      margin-top: 50px;
+    }
+
+    .video-container iframe {
+      width: 560px;
+      height: 315px;
+      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.7);
+    }
+
+    .form-container {
+      margin-top: 40px;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 10px;
+      color: black;
+      box-shadow: 0 0 10px rgba(0,0,0,0.7);
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .form-container label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .form-container input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    .form-container button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: black;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .form-container button:hover {
+      background-color: #333;
+    }
+
+    .suporte {
+      margin-top: 10px;
+      font-weight: bold;
+      color: white;
+      text-shadow: 1px 1px 3px black;
+    }
+
+    .left-fixed-buttons {
+      position: fixed;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      z-index: 1001;
+    }
+
+    .gif-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 320px;
+    }
+
+    #gifCima, #gifAndando {
+      display: none;
+      width: 300px;
+      max-width: 100%;
+      margin-top: 10px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+
+    button {
+      background-color: white;
+      color: black;
+      border: 2px solid black;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: 0.2s ease;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    button:hover {
+      background-color: #f0f0f0;
+    }
+
+    .info-inferior {
+      position: fixed;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      max-width: 300px;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 14px;
+      color: #000;
+      text-align: justify;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      line-height: 1.6;
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Trabalho de Programação</h1>
+
+  <div class="content-wrapper">
+    <!-- 🎥 Vídeo centralizado -->
+    <div class="video-container">
+      <iframe 
+        src="https://www.youtube.com/embed/G6f0vnOEB3g" 
+        title="YouTube video player" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <!-- 📑 Formulário -->
+    <div class="form-container">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome" placeholder="Digite seu nome">
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="Digite seu email">
+
+      <label for="celular">Celular:</label>
+      <input type="tel" id="celular" name="celular" placeholder="Digite seu número">
+
+      <button type="submit">Enviar</button>
+    </div>
+
+    <div class="suporte">Suporte</div>
+  </div>
+
+  <!-- 🎬 Botões e GIFs no lado esquerdo -->
+  <div class="left-fixed-buttons">
+    <div class="gif-container">
+      <button onclick="mostrarGifCima()">Mostrar Imagem de Cima</button>
+      <button onclick="ocultarGifCima()">Ocultar Imagem de Cima</button>
+      <img id="gifCima" src="scene2.webp" alt="GIF de cima">
+    </div>
+
+    <div class="gif-container">
+      <button onclick="mostrarGifBaixo()">Mostrar Imagem de Baixo</button>
+      <button onclick="ocultarGifBaixo()">Ocultar Imagem de Baixo</button>
+      <img id="gifAndando" src="https://i.gifer.com/5TMy.gif" alt="GIF da pessoa andando">
+    </div>
+  </div>
+
+  <!-- ℹ️ Quadro branco lateral -->
+  <div class="info-inferior" tabindex="0">
+    <p>
+      A tag <strong>input</strong> em HTML serve para criar campos de entrada 
+      de dados em um formulário ou em outros contextos onde o usuário 
+      precise fornecer informações. Ela permite criar diferentes tipos 
+      de campos, como caixas de texto, botões de opção, caixas de 
+      seleção, etc.
+      <br><br>
+      A tag <strong>label</strong> em HTML serve para associar um rótulo 
+      a um elemento de formulário (como um input, um select ou um textarea). 
+      Isso melhora a acessibilidade, pois permite que os utilizadores possam 
+      clicar no rótulo e o foco do elemento de formulário seja imediatamente 
+      direcionado. Além disso, os leitores de tela podem identificar e ler o 
+      rótulo do formulário.
+    </p>
+  </div>
+
+  <script>
+    function mostrarGifCima() {
+      document.getElementById("gifCima").style.display = "block";
+    }
+
+    function ocultarGifCima() {
+      document.getElementById("gifCima").style.display = "none";
+    }
+
+    function mostrarGifBaixo() {
+      document.getElementById("gifAndando").style.display = "block";
+    }
+
+    function ocultarGifBaixo() {
+      document.getElementById("gifAndando").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
